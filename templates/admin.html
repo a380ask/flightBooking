@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{%block title %}
+  Admin-Data Entry
+{% endblock %}
+
+{%block body %}
+  <h1>Enter flight information here</h1>
+  <form class="form-group" action="{{ url_for('admin') }}" method="post">
+    <label for="origin">Origin</label>
+      <input class="form-control" type="text" name="origin" placeholder="Bangalore"><br>
+
+    <label for="destination">Destination</label>
+      <input class="form-control" type="text" name="destination" placeholder="Delhi"><br>
+
+    <label for="duration">Flight time (minutes)</label>
+      <input class="form-control" type="number" name="duration" placeholder="100"><br>
+
+    <div class="form-group">
+      <button class="btn btn-primary">Submit to database</button>
+    </div>
+    <div class="form-group">
+      <a class="btn btn-secondary" role="button" href="{{ url_for('index') }}">Back</a>
+    </div>
+  </form>
+
+  <form class="" action="" method="post">
+    <table class="table table-hover table-striped">
+      <thead class="thead-dark">
+        <th>Flight Number</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Duration (Minutes)</th>
+      </thead>
+      {% for flight in flights %}
+      <tbody>
+        <tr>
+          <td><a href="/details?idd={{ flight.id }}" name="idd">{{ flight.id }}</a></td>
+          <td><a href="/details?idd={{ flight.id }}" name="idd">{{ flight.origin }}</a></td>
+          <td><a href="/details?idd={{ flight.id }}" name="idd">{{ flight.destination }}</a></td>
+          <td><a href="/details?idd={{ flight.id }}" name="idd">{{ flight.duration }}</a></td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </form>
+{% endblock %}

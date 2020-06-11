@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Flight #{{ flight_id }}
+{% endblock %}
+
+{% block body %}
+  <form class="form-control" action="/details" method="post">
+    {% for i in find_flight %}
+    <h1>{{ i[0] }} to {{ i[1] }}</h1>
+    {% endfor %}
+    <h3>Flight Number: {{ flight_id }}</h3>
+    <h5>Passengers on this flight:</h5>
+    <ol>
+      {% for passenger in passengers %}
+      {% for i in passenger %}
+      <li>{{ i }}</li>
+      {% endfor %}
+      {% endfor %}
+    </ol>
+  </form>
+{% endblock %}

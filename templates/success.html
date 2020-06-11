@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ Booked flight!
+{% endblock %}
+
+{% block body %}
+  <h1>Success!! You have booked flight!!</h1>
+  <div class="form-group">
+      <a class="btn btn-primary" role="button" href="{{ url_for('index') }}">Book another flight</a>
+  </div>
+{% endblock %}
